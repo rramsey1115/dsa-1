@@ -55,15 +55,47 @@ Output: [1, 3, 12, 0, 0]
 Your code here
 --------------------------------------------------------------------------------------------*/
 
-function moveZeroes(nums) {
+// solution 1
+// most optimal with O(n) time complexity - only one pass through input array
+function moveZeroes1(numsArray) {
   let lastNonZero = 0;
-
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0) {
-      // Swap with the element at lastNonZero pointer
-      [nums[i], nums[lastNonZero]] = [nums[lastNonZero], nums[i]];
+  // iterate array of numsArray
+  for (let i = 0; i < numsArray.length; i++) {
+    // check if the current index is non-zero
+    if (numsArray[i] !== 0) {
+      // if is non-zero, swap with last non-zero
+      [numsArray[i], numsArray[lastNonZero]] = [
+        numsArray[lastNonZero],
+        numsArray[i],
+      ];
+      // increment our counter so that the next swap is in the following index
       lastNonZero++;
     }
-    console.log(nums);
   }
+  return numsArray;
 }
+
+// solution 2
+// two pass version (less optimal althrough same time complexity O(n))
+function moveZeroes2(numsArray) {
+  // used to track which index our non-zeroes exist on
+  let pointer = 0;
+
+  // copies all non-zeroes to the front of the array, NOT replacing them
+  for (let i = 0; i < numsArray.length; i++) {
+    if (numsArray[i] !== 0) {
+      numsArray[pointer++] = numsArray[i];
+    }
+  }
+
+  // based on where the pointer of non-zeroes ended, fill the rest of the array with 0s
+  while (pointer < numsArray.length) {
+    numsArray[pointer] = 0;
+    pointer++;
+  }
+  // return updated array
+  return numsArray;
+}
+
+console.log("solution 1: ", moveZeroes1([0, 2, 3, 6, 0, 0, 7, 2, 0]));
+console.log("solution 2: ", moveZeroes2([0, 2, 3, 6, 0, 0, 7, 2, 0]));
