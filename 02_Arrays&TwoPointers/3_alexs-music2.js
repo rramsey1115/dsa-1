@@ -4,22 +4,31 @@
 // Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create functions to manage setlists for different venues efficiently
 
-// function buildSetlistWithPush(songs) {
-//   // Start with empty setlist and use push() to add songs one by one
-//   // Return the final setlist
-// }
+function buildSetlistWithPush(songs) {
+  const setlist = [];
+  // Start with empty setlist and use push() to add songs one by one
+  songs.forEach((song) => setlist.push(song));
+  // Return the final setlist
+  return setlist;
+}
 
-// function managePerformanceQueue(initialLineup, newOpeners, finishedActs) {
-//   // Use unshift() to add new opening acts
-//   // Use shift() to remove finished acts
-//   // Return the updated lineup
-// }
+function managePerformanceQueue(initialLineup, newOpeners, finishedActs) {
+  // Use unshift() to add new opening acts
+  initialLineup.unshift(...newOpeners);
+  // Use shift() to remove finished acts
+  // for loop because finishedActs could be any number of acts to remove
+  for (let i = 0; i < finishedActs; i++) {
+    initialLineup.shift();
+  }
+  // Return the updated lineup
+  return initialLineup;
+}
 
-// const songs = ["Thunderstruck", "Hotel California", "Free Bird"];
+const songs = ["Thunderstruck", "Hotel California", "Free Bird"];
 // console.log("Built setlist:", buildSetlistWithPush(songs));
 
-// let lineup = ["Alex's Main Set"];
-// lineup = managePerformanceQueue(lineup, ["Jazz Trio", "Folk Singer"], 1);
+let lineup = ["Alex's Main Set"];
+lineup = managePerformanceQueue(lineup, ["Jazz Trio", "Folk Singer"], 2);
 // console.log("Updated lineup:", lineup);
 
 // ==============================
@@ -28,25 +37,26 @@
 // Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create venue-specific versions and filter songs by criteria
 
-// function createVenueVersions(songs, venueType) {
-//   // Use map() to transform songs for specific venue
-//   // venueType can be "rock", "jazz", or "electronic"
-//   // Transform duration and add venue-specific properties
-// }
+function createVenueVersions(songs, venueType) {
+  // Use map() to transform songs for specific venue
+  songs.map()
+  // venueType can be "rock", "jazz", or "electronic"
+  // Transform duration and add venue-specific properties
+}
 
-// function filterSongsForEvent(repertoire, eventType) {
-//   // Use filter() to select appropriate songs
-//   // eventType can be "wedding", "corporate", "festival"
-//   // Return songs matching the event criteria
-// }
+function filterSongsForEvent(repertoire, eventType) {
+  // Use filter() to select appropriate songs
+  // eventType can be "wedding", "corporate", "festival"
+  // Return songs matching the event criteria
+}
 
-// const coreSongs = [
-//   { title: "Wonderwall", genre: "alternative", mood: "nostalgic", duration: 4.2 },
-//   { title: "At Last", genre: "jazz", mood: "romantic", duration: 3.2 }
-// ];
+const coreSongs = [
+  { title: "Wonderwall", genre: "alternative", mood: "nostalgic", duration: 4.2 },
+  { title: "At Last", genre: "jazz", mood: "romantic", duration: 3.2 }
+];
 
-// console.log("Rock versions:", createVenueVersions(coreSongs, "rock"));
-// console.log("Wedding songs:", filterSongsForEvent(coreSongs, "wedding"));
+console.log("Rock versions:", createVenueVersions(coreSongs, "rock"));
+console.log("Wedding songs:", filterSongsForEvent(coreSongs, "wedding"));
 
 // ==============================
 // Exercise 3: Help Alex Analyze Performance Data

@@ -72,28 +72,26 @@ Follow-up Questions:
 
 // 3. implement -----------------------------------------------------------
 function removeElement(nums, val) {
-  // console.log(`Nums: ${nums} - Val: ${val} - Length: ${nums.length}`);
+  console.log(`Nums: ${nums} - Val: ${val} - Length: ${nums.length}`); // show initial array for testing
   if (nums.length === 0) {
     return 0; // early return if array is empty
   }
 
   // iterate array from first index
   for (let i = 0; i < nums.length; i++) {
-    // while index is a match with val, remove index
     // use while loop so that when array shifts over, the value at i could be val again
     while (Number(nums[i]) === Number(val)) {
-      // console.log("Found Val at idex", i);
       //remove val from array
       nums.splice(i, 1);
     }
   }
-  // console.log(`Nums: ${nums} - Val: ${val} - Length: ${nums.length}`);
+  console.log(`Nums: ${nums} - Val: ${val} - Length: ${nums.length}`); // show returned array for testing
   return nums.length;
 }
 
 // 4. test -----------------------------------------------------------------
 const numbers = [4, 5, 5, 7, 9, 11, 0, 3, 6, 22, 8, 5, 8, 1, 5];
-const value = 5;
+const value = 8;
 console.log("My solution: ", removeElement(numbers, value));
 
 // 5. optimize -------------------------------------------------------------
